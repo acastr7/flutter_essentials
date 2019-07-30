@@ -8,7 +8,6 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 import android.app.Activity
 
 
-
 class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
 
     companion object {
@@ -20,8 +19,11 @@ class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
-        if (call.method.startsWith("AppInfo.")) {
-            AppInfo(activity).onMethodCall(call, result)
+        if (call.method.startsWith(AppInfo.prefix)) {
+            AppInfo().onMethodCall(call, result)
+        }
+        if (call.method.startsWith(AppPreferences.prefix)) {
+            AppPreferences().onMethodCall(call, result)
         } else {
             result.notImplemented()
         }

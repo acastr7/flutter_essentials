@@ -9,32 +9,31 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 
 class AppInfo : MethodChannel.MethodCallHandler {
-    private val context: Context
+
+    companion object {
+        const val prefix : String = "AppInfo."
+        val packageName: String
+            get() {
+                return Platform.appContext.applicationContext.packageName;
+            }
+
+    }
 
     private val packageInfo: PackageInfo
         get() {
-            var pm = context.applicationContext.packageManager;
-            var packageName = context.applicationContext.packageName;
+            var pm = Platform.appContext.applicationContext.packageManager;
+            var packageName = Platform.appContext.applicationContext.packageName;
             return pm.getPackageInfo(packageName, PackageManager.GET_META_DATA)
         }
 
-    private val packageName: String
-        get() {
-            return context.applicationContext.packageName;
-        }
-
-    constructor(context: Context) {
-        this.context = context
-    }
-
     override fun onMethodCall(call: MethodCall, result: Result) {
-        var method = call.method.substringAfter("AppInfo.")
+        var method = call.method.substringAfter(prefix)
 
         if (method == "packageName") {
             result.success(packageName)
         } else if (method == "name") {
-            var applicationInfo = context.applicationContext.applicationInfo
-            var pm = context.applicationContext.packageManager
+            var applicationInfo = Platform.appContext.applicationContext.applicationInfo
+            var pm = Platform.appContext.applicationContext.packageManager
             result.success(applicationInfo.loadLabel(pm))
         } else if (method == "versionString") {
             result.success(packageInfo.versionName)
@@ -42,6 +41,7 @@ class AppInfo : MethodChannel.MethodCallHandler {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
                 result.success(packageInfo.longVersionCode.toString())
             } else {
+                @Suppress("DEPRECATION")
                 result.success(packageInfo.versionCode.toString())
             }
         } else if (method == "showSettingsUI") {
@@ -52,7 +52,7 @@ class AppInfo : MethodChannel.MethodCallHandler {
             settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             settingsIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-            context.startActivity(settingsIntent)
+            Platform.appContext.startActivity(settingsIntent)
             result.success(null)
         } else {
             result.notImplemented()
