@@ -1,32 +1,34 @@
 import 'package:flutter/services.dart';
 
 class AppInfo {
-  static const MethodChannel _channel =  const MethodChannel('flutter_essentials.AppInfo');
+  static const String _methodPrefix = "AppInfo.";
 
-  const AppInfo();
+  final MethodChannel _channel;
+
+  const AppInfo(this._channel);
 
   Future<String> get packageName async {
-    final String version = await _channel.invokeMethod('packageName');
+    final String version = await _channel.invokeMethod('${_methodPrefix}packageName');
     return version;
   }
 
-  static Future<String> get name async {
-    final String version = await _channel.invokeMethod('name');
+  Future<String> get name async {
+    final String version = await _channel.invokeMethod('${_methodPrefix}name');
     return version;
   }
 
-  static Future<String> get versionString async {
-    final String version = await _channel.invokeMethod('versionString');
+  Future<String> get versionString async {
+    final String version = await _channel.invokeMethod('${_methodPrefix}versionString');
     return version;
   }
 
-  static Future<String> get buildString async {
-    final String version = await _channel.invokeMethod('buildString');
+  Future<String> get buildString async {
+    final String version = await _channel.invokeMethod('${_methodPrefix}buildString');
     return version;
   }
 
-  static Future get showSettingsUI async {
-    final String version = await _channel.invokeMethod('showSettingsUI');
+  Future get showSettingsUI async {
+    final String version = await _channel.invokeMethod('${_methodPrefix}showSettingsUI');
     return version;
   }
 }

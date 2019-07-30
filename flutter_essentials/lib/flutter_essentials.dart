@@ -7,14 +7,9 @@ class FlutterEssentials {
   static const MethodChannel _channel =
       const MethodChannel('flutter_essentials');
 
-  static const _appinfo = const AppInfo();
+  static const _appinfo = const AppInfo(_channel);
 
   static AppInfo get appInfo {
     return _appinfo;
-  }
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
   }
 }

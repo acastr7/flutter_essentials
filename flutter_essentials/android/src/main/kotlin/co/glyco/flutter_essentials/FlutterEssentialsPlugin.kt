@@ -5,21 +5,25 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
+import android.app.Activity
 
-class FlutterEssentialsPlugin: MethodCallHandler {
-  companion object {
-    @JvmStatic
-    fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "flutter_essentials.AppInfo")
-      channel.setMethodCallHandler(FlutterEssentialsPlugin())
-    }
-  }
 
-  override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
+
+class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
+
+    companion object {
+        @JvmStatic
+        fun registerWith(registrar: Registrar) {
+            val channel = MethodChannel(registrar.messenger(), "flutter_essentials")
+            channel.setMethodCallHandler(FlutterEssentialsPlugin(registrar.activity()))
+        }
     }
-  }
+
+    override fun onMethodCall(call: MethodCall, result: Result) {
+        if (call.method.startsWith("AppInfo.")) {
+            AppInfo(activity).onMethodCall(call, result)
+        } else {
+            result.notImplemented()
+        }
+    }
 }
