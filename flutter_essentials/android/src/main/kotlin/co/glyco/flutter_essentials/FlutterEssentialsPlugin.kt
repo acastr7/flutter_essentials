@@ -14,6 +14,7 @@ class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
             val channel = MethodChannel(registrar.messenger(), "flutter_essentials")
+            Platform(registrar.activity())
             channel.setMethodCallHandler(FlutterEssentialsPlugin(registrar.activity()))
         }
     }

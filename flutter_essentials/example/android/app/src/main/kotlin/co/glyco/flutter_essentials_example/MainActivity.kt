@@ -9,8 +9,6 @@ import io.flutter.plugins.GeneratedPluginRegistrant
 class MainActivity: FlutterActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    Platform(this)
     GeneratedPluginRegistrant.registerWith(this)
-
   }
 }

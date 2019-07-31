@@ -13,7 +13,12 @@ import kotlin.concurrent.withLock
 class AppPreferences : MethodChannel.MethodCallHandler {
 
     companion object {
-        const val prefix : String = "Preferences."
+        const val prefix: String = "Preferences."
+        const val knownArgumentKey: String = "key"
+        const val knownArgumentDefaultValue: String = "defaultValue"
+        const val knownArgumentSharedName: String = "sharedName"
+        const val knownArgumentType: String = "type"
+        const val knownArgumentValue: String = "value"
 
         val lock = ReentrantLock()
 
@@ -67,27 +72,24 @@ class AppPreferences : MethodChannel.MethodCallHandler {
             }
         }
 
-        private fun <T> platformGet(key: String, defaultValue: T?, sharedName: String?): T {
+        private fun <T> platformGet(key: String, defaultValue: T, sharedName: String?): T {
             lock.withLock {
                 var sharedPreferences = getSharedPreferences(sharedName)
-                if (defaultValue == null) {
-                    return sharedPreferences.getString(key, null) as T
-                } else {
-                    when (defaultValue) {
-                        is String -> return sharedPreferences.getString(key, defaultValue) as T
-                        is Int -> return sharedPreferences.getInt(key, defaultValue) as T
-                        is Boolean -> return sharedPreferences.getBoolean(key, defaultValue) as T
-                        is Long -> return sharedPreferences.getLong(key, defaultValue) as T
-                        is Double -> {
-                            var savedDouble = sharedPreferences.getString(key, null);
-                            if (savedDouble.isNullOrBlank()) {
-                                return defaultValue
-                            }
-
-                            return savedDouble.toDouble() as T
+                when (defaultValue) {
+                    is String -> return sharedPreferences.getString(key, defaultValue) as T
+                    is Int -> return sharedPreferences.getInt(key, defaultValue) as T
+                    is Boolean -> return sharedPreferences.getBoolean(key, defaultValue) as T
+                    is Long -> return sharedPreferences.getLong(key, defaultValue) as T
+                    is Double -> {
+                        var savedDouble = sharedPreferences.getString(key, null)
+                        if (savedDouble.isNullOrBlank()) {
+                            return defaultValue
                         }
-                        is Float -> return sharedPreferences.getFloat(key, defaultValue) as T
+
+                        return savedDouble.toDouble() as T
                     }
+                    is Float -> return sharedPreferences.getFloat(key, defaultValue) as T
+                    else -> return sharedPreferences.getString(key, null) as T
                 }
             }
         }
@@ -108,19 +110,78 @@ class AppPreferences : MethodChannel.MethodCallHandler {
         }
     }
 
+
     override fun onMethodCall(call: MethodCall, result: Result) {
         var method = call.method.substringAfter(prefix)
 
-        if (method == "packageName") {
-
-        } else if (method == "name") {
-        } else if (method == "versionString") {
-        } else if (method == "buildString") {
-
-        } else if (method == "showSettingsUI") {
-
-        } else {
-            result.notImplemented()
+        when (method) {
+            "clear" -> {
+                platformClear(call.argument(knownArgumentSharedName))
+            }
+            "remove" -> {
+                call.argument<String>(knownArgumentKey)?.let {
+                    platformRemove(it, call.argument(knownArgumentSharedName))
+                    result.success(null)
+                } ?: result.error(method, "$knownArgumentKey not found", null)
+            }
+            "containsKey" -> {
+                call.argument<String>(knownArgumentKey)?.let {
+                    platformContainsKey(it, call.argument(knownArgumentSharedName))
+                    result.success(null)
+                } ?: result.error(method, "$knownArgumentKey not found", null)
+            }
+            "get" -> {
+                call.argument<String>(knownArgumentKey)?.let { key ->
+                    call.argument<String>(knownArgumentType)?.let { type ->
+                        when (type) {
+                            "int" -> {
+                                result.success(platformGet(key, call.argument<Int>(knownArgumentDefaultValue), call.argument(knownArgumentSharedName)))
+                            }
+                            "double" -> {
+                                result.success(platformGet(key, call.argument<Double>(knownArgumentDefaultValue), call.argument(knownArgumentSharedName)))
+                            }
+                            "String" -> {
+                                result.success(platformGet(key, call.argument<String>(knownArgumentDefaultValue), call.argument(knownArgumentSharedName)))
+                            }
+                            "bool" -> {
+                                result.success(platformGet(key, call.argument<Boolean>(knownArgumentDefaultValue), call.argument(knownArgumentSharedName)))
+                            }
+                            else -> result.error(method, "$knownArgumentKey $type not supported", null)
+                        }
+                    }
+                } ?: result.error(method, "$knownArgumentKey not found", null)
+            }
+            "set" -> {
+                call.argument<String>(knownArgumentKey)?.let { key ->
+                    call.argument<String>(knownArgumentType)?.let { type ->
+                        when (type) {
+                            "int" -> {
+                                var number = call.argument<Number>(knownArgumentValue)
+                                if (number != null) {
+                                    platformSet(key, number.toInt(), call.argument(knownArgumentSharedName))
+                                    result.success(null)
+                                } else {
+                                    result.error(method, "$knownArgumentValue $number not set", null)
+                                }
+                            }
+                            "double" -> {
+                                platformSet(key, call.argument<Double>(knownArgumentValue), call.argument(knownArgumentSharedName))
+                                result.success(null)
+                            }
+                            "String" -> {
+                                platformSet(key, call.argument<String>(knownArgumentValue), call.argument(knownArgumentSharedName))
+                                result.success(null)
+                            }
+                            "bool" -> {
+                                platformSet(key, call.argument<Boolean>(knownArgumentValue), call.argument(knownArgumentSharedName))
+                                result.success(null)
+                            }
+                            else -> result.error(method, "$knownArgumentKey $type not supported", null)
+                        }
+                    }
+                } ?: result.error(method, "$knownArgumentKey not found", null)
+            }
+            else -> result.notImplemented()
         }
     }
 }
