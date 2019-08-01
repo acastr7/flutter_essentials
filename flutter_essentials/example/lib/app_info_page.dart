@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_essentials/flutter_essentials.dart';
+import 'package:flutter_essentials/app_info.dart';
 import 'package:flutter/services.dart';
 
 class AppInfoPage extends StatefulWidget {
@@ -28,25 +28,25 @@ class _AppInfoPage extends State<AppInfoPage> {
 
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      packageName = await FlutterEssentials.appInfo.packageName;
+      packageName = await AppInfo.packageName;
     } on PlatformException {
       packageName = 'Failed to get package name.';
     }
 
     try {
-      name = await FlutterEssentials.appInfo.name;
+      name = await AppInfo.name;
     } on PlatformException {
       name = 'Failed to get app name.';
     }
 
     try {
-      version = await FlutterEssentials.appInfo.versionString;
+      version = await AppInfo.versionString;
     } on PlatformException {
       version = 'Failed to get version.';
     }
 
     try {
-      build = await FlutterEssentials.appInfo.buildString;
+      build = await AppInfo.buildString;
     } on PlatformException {
       build = 'Failed to get build.';
     }
@@ -80,7 +80,7 @@ class _AppInfoPage extends State<AppInfoPage> {
             RaisedButton(
               child: Text("Show Settings UI"),
               onPressed: () async {
-                await FlutterEssentials.appInfo.showSettingsUI;
+                await AppInfo.showSettingsUI;
               },
             )
           ],

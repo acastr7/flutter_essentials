@@ -20,13 +20,10 @@ class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
-        if (call.method.startsWith(AppInfo.prefix)) {
-            AppInfo().onMethodCall(call, result)
-        }
-        if (call.method.startsWith(AppPreferences.prefix)) {
-            AppPreferences().onMethodCall(call, result)
-        } else {
-            result.notImplemented()
+        when {
+            call.method.startsWith(AppInfo.prefix) -> AppInfo().onMethodCall(call, result)
+            call.method.startsWith(AppPreferences.prefix) -> AppPreferences().onMethodCall(call, result)
+            else -> result.notImplemented()
         }
     }
 }

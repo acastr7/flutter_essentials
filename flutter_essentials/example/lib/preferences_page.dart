@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_essentials/flutter_essentials.dart';
+import 'package:flutter_essentials/preferences.dart';
 import 'package:flutter/services.dart';
 
 class PreferencesPage extends StatefulWidget {
@@ -9,7 +9,7 @@ class PreferencesPage extends StatefulWidget {
 
 class _PreferencesPage extends State<PreferencesPage> {
   var _intValue = TextEditingController();
-  var _boolValue = TextEditingController();
+  var _boolValue = false;
   var _stringValue = TextEditingController();
   var _doubleValue = TextEditingController();
   String _errorMessage;
@@ -30,29 +30,25 @@ class _PreferencesPage extends State<PreferencesPage> {
 
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      intValue =
-          await FlutterEssentials.preferences.getInt("testIntKeyValue", 0);
+      intValue = await Preferences.getInt("testIntKeyValue", 0);
     } on PlatformException {
       errorMessage = 'Failed to get int value.';
     }
 
     try {
-      boolValue = await FlutterEssentials.preferences
-          .getBool("testBoolKeyValue", false);
+      boolValue = await Preferences.getBool("testBoolKeyValue", false);
     } on PlatformException {
       errorMessage = 'Failed to get bool value.';
     }
 
     try {
-      stringValue = await FlutterEssentials.preferences
-          .getString("testStringKeyValue", null);
+      stringValue = await Preferences.getString("testStringKeyValue", null);
     } on PlatformException {
       errorMessage = 'Failed to get string value.';
     }
 
     try {
-      doubleValue = await FlutterEssentials.preferences
-          .getDouble("testDoubleKeyValue", 0);
+      doubleValue = await Preferences.getDouble("testDoubleKeyValue", 0);
     } on PlatformException {
       errorMessage = 'Failed to get double value.';
     }
@@ -63,7 +59,7 @@ class _PreferencesPage extends State<PreferencesPage> {
     if (!mounted) return;
 
     setState(() {
-      _boolValue.text = boolValue.toString();
+      _boolValue = boolValue;
       _intValue.text = intValue.toString();
       _stringValue.text = stringValue;
       _doubleValue.text = doubleValue.toString();
@@ -94,20 +90,31 @@ class _PreferencesPage extends State<PreferencesPage> {
                 keyboardType: TextInputType.number,
                 controller: _stringValue,
                 decoration: InputDecoration(labelText: 'String Test')),
-            Text('Bool Test: ${_boolValue.text}'),
-            RaisedButton(
-              child: Text("Update Values"),
-              onPressed: () async {
-                await FlutterEssentials.preferences
-                    .setInt("testIntKeyValue", int.parse(_intValue.text));
-                await FlutterEssentials.preferences.setDouble(
-                    "testDoubleKeyValue", double.parse(_doubleValue.text));
+            Text('Bool Test: $_boolValue'),
+            Switch(
+              value: _boolValue,
+              onChanged: (value) {
+                setState(() {
+                  _boolValue = value;
+                });
               },
             ),
             RaisedButton(
-                child: Text("Clear Values"),
+              child: Text("Update Values"),
+              onPressed: () async {
+                await Preferences.setInt(
+                    "testIntKeyValue", int.parse(_intValue.text));
+                await Preferences.setDouble(
+                    "testDoubleKeyValue", double.parse(_doubleValue.text));
+                await Preferences.setBool("testBoolKeyValue", _boolValue);
+                await initPlatformState();
+              },
+            ),
+            RaisedButton(
+                child: Text("Clear Saved Values"),
                 onPressed: () async {
-                  await FlutterEssentials.preferences.clear();
+                  await Preferences.clear();
+                  await initPlatformState();
                 }),
           ],
         ),

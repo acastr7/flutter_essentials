@@ -117,6 +117,7 @@ class AppPreferences : MethodChannel.MethodCallHandler {
         when (method) {
             "clear" -> {
                 platformClear(call.argument(knownArgumentSharedName))
+                result.success(null)
             }
             "remove" -> {
                 call.argument<String>(knownArgumentKey)?.let {
