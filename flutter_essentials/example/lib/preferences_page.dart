@@ -61,7 +61,7 @@ class _PreferencesPage extends State<PreferencesPage> {
     setState(() {
       _boolValue = boolValue;
       _intValue.text = intValue.toString();
-      _stringValue.text = stringValue;
+      _stringValue.text = stringValue ?? "";
       _doubleValue.text = doubleValue.toString();
       _errorMessage = errorMessage;
     });
@@ -87,7 +87,6 @@ class _PreferencesPage extends State<PreferencesPage> {
               decoration: InputDecoration(labelText: 'Double Test'),
             ),
             new TextFormField(
-                keyboardType: TextInputType.number,
                 controller: _stringValue,
                 decoration: InputDecoration(labelText: 'String Test')),
             Text('Bool Test: $_boolValue'),
@@ -106,6 +105,7 @@ class _PreferencesPage extends State<PreferencesPage> {
                     "testIntKeyValue", int.parse(_intValue.text));
                 await Preferences.setDouble(
                     "testDoubleKeyValue", double.parse(_doubleValue.text));
+                await Preferences.setString("testStringKeyValue", _stringValue.text);
                 await Preferences.setBool("testBoolKeyValue", _boolValue);
                 await initPlatformState();
               },

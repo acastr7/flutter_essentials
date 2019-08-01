@@ -20,11 +20,7 @@ class AppPreferences : MethodChannel.MethodCallHandler {
         const val knownArgumentType: String = "type"
         const val knownArgumentValue: String = "value"
 
-        val lock = ReentrantLock()
-
-        fun getPrivatePreferencesSharedName(feature: String): String {
-            return "${AppInfo.packageName}.flutteressentials.$feature"
-        }
+        private val lock = ReentrantLock()
 
         private fun platformContainsKey(key: String, sharedName: String?): Boolean {
             lock.withLock {
@@ -62,8 +58,8 @@ class AppPreferences : MethodChannel.MethodCallHandler {
                         is Boolean -> editor.putBoolean(key, value)
                         is Long -> editor.putLong(key, value)
                         is Double -> {
-                            var valueString = value.toString();
-                            editor.putString(key, valueString);
+                            var valueString = value.toString()
+                            editor.putString(key, valueString)
                         }
                         is Float -> editor.putFloat(key, value)
                     }
@@ -103,11 +99,6 @@ class AppPreferences : MethodChannel.MethodCallHandler {
                 context.getSharedPreferences(sharedName, Context.MODE_PRIVATE)
             }
         }
-
-
-        fun ContainsKey(key: String, sharedName: String?): Boolean {
-            return platformContainsKey(key, sharedName)
-        }
     }
 
 
@@ -127,8 +118,8 @@ class AppPreferences : MethodChannel.MethodCallHandler {
             }
             "containsKey" -> {
                 call.argument<String>(knownArgumentKey)?.let {
-                    platformContainsKey(it, call.argument(knownArgumentSharedName))
-                    result.success(null)
+                    var containsKey = platformContainsKey(it, call.argument(knownArgumentSharedName))
+                    result.success(containsKey)
                 } ?: result.error(method, "$knownArgumentKey not found", null)
             }
             "get" -> {
