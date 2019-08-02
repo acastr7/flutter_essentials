@@ -23,6 +23,7 @@ class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
         when {
             call.method.startsWith(AppInfo.prefix) -> AppInfo().onMethodCall(call, result)
             call.method.startsWith(AppPreferences.prefix) -> AppPreferences().onMethodCall(call, result)
+            call.method.startsWith(DeviceInfo.prefix) -> DeviceInfo().onMethodCall(call, result)
             else -> result.notImplemented()
         }
     }

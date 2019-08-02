@@ -4,6 +4,8 @@ import 'package:flutter_essentials_example/preferences_page.dart';
 import 'package:flutter_essentials_example/version_tracking_page.dart';
 import 'package:flutter_essentials/version_tracking.dart';
 
+import 'device_info_page.dart';
+
 
 void main() async{
   runApp(MaterialApp(
@@ -47,6 +49,15 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => new VersionTrackingPage()),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text("Device Info"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => new DeviceInfoPage()),
                 );
               },
             )
