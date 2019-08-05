@@ -11,7 +11,11 @@ public class SwiftFlutterEssentialsPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     if call.method.starts(with: AppInfo.prefix){
         AppInfo.handle(call, result: result)
-    }else{
+    }
+    else if call.method.starts(with: DeviceInfo.prefix){
+        DeviceInfo.handle(call, result: result)
+    }
+    else{
         result(FlutterMethodNotImplemented)
     }
   }
