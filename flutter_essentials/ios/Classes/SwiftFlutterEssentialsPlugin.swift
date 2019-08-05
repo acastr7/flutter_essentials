@@ -9,6 +9,10 @@ public class SwiftFlutterEssentialsPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+    if call.method.starts(with: AppInfo.prefix){
+        AppInfo.handle(call, result: result)
+    }else{
+        result(FlutterMethodNotImplemented)
+    }
   }
 }
