@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_essentials/app_info.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_essentials/flutter_essentials.dart';
 
@@ -15,7 +16,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await FlutterEssentials.platformVersion, '42');
+  test('buildString', () async {
+    expect(await AppInfo.buildString, '42');
   });
 }

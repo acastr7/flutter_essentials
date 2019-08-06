@@ -1,8 +1,10 @@
 name: flutter_essentials
-description: Essential cross platform APIs for your mobile&#x2F;desktop&#x2F;web apps.
+description: Essential cross platform APIs for your mobile\desktop\web apps.
 version: 0.0.1
-author: "Andres Castro"
-homepage:
+author: "Andres Castro <andres@glyco.co>"
+repository: https://github.com/acastr7/flutter_essentials
+homepage: https://github.com/acastr7/flutter_essentials
+
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

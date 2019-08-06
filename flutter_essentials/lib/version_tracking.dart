@@ -115,15 +115,15 @@ class VersionTracking {
     sb.writeln(
         "  IsFirstLaunchForCurrentBuild:   $isFirstLaunchForCurrentBuild");
     sb.writeln();
-    sb.writeln("  CurrentVersion:                 ${currentVersion}");
-    sb.writeln("  PreviousVersion:                ${previousVersion}");
-    sb.writeln("  FirstInstalledVersion:          ${firstInstalledVersion}");
-    sb.writeln("  VersionHistory:                 ${versionHistory}");
+    sb.writeln("  CurrentVersion:                 $currentVersion");
+    sb.writeln("  PreviousVersion:                $previousVersion");
+    sb.writeln("  FirstInstalledVersion:          $firstInstalledVersion");
+    sb.writeln("  VersionHistory:                 $versionHistory");
     sb.writeln();
-    sb.writeln("  CurrentBuild:                   ${currentBuild}");
-    sb.writeln("  PreviousBuild:                  ${previousBuild}");
-    sb.writeln("  FirstInstalledBuild:            ${firstInstalledBuild}");
-    sb.writeln("  BuildHistory:                   ${buildHistory}");
+    sb.writeln("  CurrentBuild:                   $currentBuild");
+    sb.writeln("  PreviousBuild:                  $previousBuild");
+    sb.writeln("  FirstInstalledBuild:            $firstInstalledBuild");
+    sb.writeln("  BuildHistory:                   $buildHistory");
     return sb.toString();
   }
 }

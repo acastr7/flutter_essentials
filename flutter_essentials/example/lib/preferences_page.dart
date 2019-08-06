@@ -98,6 +98,7 @@ class _PreferencesPage extends State<PreferencesPage> {
                 });
               },
             ),
+            Text('Error Message: $_errorMessage'),
             RaisedButton(
               child: Text("Update Values"),
               onPressed: () async {

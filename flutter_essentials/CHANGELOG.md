@@ -1,3 +1,6 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Contains App Info Api
+* Contains Device Info Api
+* Contains App Preference Api
+* Contains Version Tracking Api
