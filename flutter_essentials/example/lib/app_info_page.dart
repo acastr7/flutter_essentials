@@ -80,7 +80,7 @@ class _AppInfoPage extends State<AppInfoPage> {
             RaisedButton(
               child: Text("Show Settings UI"),
               onPressed: () async {
-                await AppInfo.showSettingsUI;
+                await AppInfo.showSettingsUI();
               },
             )
           ],

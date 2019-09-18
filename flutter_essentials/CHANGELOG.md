@@ -1,4 +1,8 @@
-## 0.0.1
+## 0.0.3
+* Update api documentation
+* Convert AppInfo.showSettingsUI to a function
+
+## 0.0.2
 
 * Contains App Info Api
 * Contains Device Info Api

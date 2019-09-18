@@ -1,14 +1,49 @@
 # flutter_essentials
 
-Essential cross platform APIs for your mobile&#x2F;desktop&#x2F;web apps.
+Flutter_essentials plugin was created as a port of the popular [Xamarin.Essentials](https://github.com/xamarin/Essentials) library. 
 
-## Getting Started
+## Supported Platforms
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+flutter_essentials is focused on the following platforms:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+* iOS (10+)
+* Android (4.4+)
+* Web (When Support Becomes Available)
+
+## API Documentation
+
+The following cross-platform APIs are available in flutter_essentials:
+
+* [Accelerometer(TODO)](Example/Accelerometer)
+* [App Information](Example/AppInformation)
+* [Battery(TODO)](Example/Battery)
+* [Clipboard(TODO)](Example/Clipboard)
+* [Compass(TODO)](Example/Compass)
+* [Connectivity(TODO)](Example/Connectivity)
+* [Device Display Information(TODO)](Example/DeviceDisplayInformation)
+* [Device Information](Example/DeviceInformation)
+* [Email(TODO)](Example/Email)
+* [File System Helpers(TODO)](Example/FileSystemHelpers)
+* [Flashlight(TODO)](Example/Flashlight)
+* [Geocoding(TODO)](Example/Geocoding)
+* [Geolocation(TODO)](Example/Geolocation)
+* [Gyroscope(TODO)](Example/Gyroscope)
+* [Launcher(TODO)](Example/launcher)
+* [Magnetometer(TODO)](Example/Magnetometer)
+* [Maps(TODO)](Example/maps)
+* [Open Browser(TODO)](Example/OpenBrowser)
+* [Phone Dialer(TODO)](Example/PhoneDialer)
+* [Preferences](Example/Preferences)
+* [Screen Lock(TODO)](Example/ScreenLock)
+* [Secure Storage(TODO)](Example/SecureStorage)
+* [Share(TODO)](Example/share)
+* [SMS(TODO)](Example/sms)
+* [Text-to-Speech(TODO)](Example/TextToSpeech)
+* [Version Tracking(TODO)](Example/VersionTracking)
+* [Vibrate(TODO)](Example/vibrate)
+
+
+## License
+
+Please see the [License](LICENSE).
+
