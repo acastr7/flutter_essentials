@@ -28,7 +28,8 @@ class Preferences {
     await SHARED_CHANNEL.invokeMethod('${_methodPrefix}clear', data);
   }
 
-  static Future<T> _get<T>(String key, [T defaultValue, String sharedName]) async {
+  static Future<T> _get<T>(String key,
+      [T defaultValue, String sharedName]) async {
     Type type = T;
     var data = <String, dynamic>{
       "key": key,
@@ -36,7 +37,8 @@ class Preferences {
       "sharedName": sharedName,
       "type": type.toString()
     };
-    final result = await SHARED_CHANNEL.invokeMethod<T>('${_methodPrefix}get', data);
+    final result =
+        await SHARED_CHANNEL.invokeMethod<T>('${_methodPrefix}get', data);
     return result;
   }
 
@@ -60,7 +62,8 @@ class Preferences {
     return _get<String>(key, defaultValue, sharedName);
   }
 
-  static Future<bool> getBool(String key, bool defaultValue, [String sharedName]) {
+  static Future<bool> getBool(String key, bool defaultValue,
+      [String sharedName]) {
     return _get<bool>(key, defaultValue, sharedName);
   }
 
