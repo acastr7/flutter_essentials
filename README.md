@@ -14,34 +14,35 @@ flutter_essentials is focused on the following platforms:
 
 The following cross-platform APIs are available in flutter_essentials:
 
-* [Accelerometer(TODO)](example/Accelerometer.md)
-* [App Information](example/AppInformation.md)
-* [Battery(TODO)](example/Battery.md)
-* [Clipboard(TODO)](example/Clipboard.md)
-* [Compass(TODO)](example/Compass.md)
-* [Connectivity(TODO)](example/Connectivity.md)
-* [Device Display Information(TODO)](example/DeviceDisplayInformation.md)
-* [Device Information](example/DeviceInformation.md)
-* [Email(TODO)](example/Email.md)
-* [File System Helpers(TODO)](example/FileSystemHelpers.md)
-* [Flashlight(TODO)](example/Flashlight.md)
-* [Geocoding(TODO)](example/Geocoding.md)
-* [Geolocation(TODO)](example/Geolocation.md)
-* [Gyroscope(TODO)](example/Gyroscope.md)
-* [Launcher(TODO)](example/launcher.md)
-* [Magnetometer(TODO)](example/Magnetometer.md)
-* [Maps(TODO)](example/maps.md)
-* [Open Browser(TODO)](example/OpenBrowser.md)
-* [Phone Dialer(TODO)](example/PhoneDialer.md)
-* [Preferences](example/Preferences.md)
-* [Screen Lock(TODO)](example/ScreenLock.md)
-* [Secure Storage(TODO)](example/SecureStorage.md)
-* [Share(TODO)](example/share.md)
-* [SMS(TODO)](example/sms.md)
-* [Text-to-Speech(TODO)](example/TextToSpeech.md)
-* [Version Tracking(TODO)](example/VersionTracking.md)
-* [Vibrate(TODO)](example/vibrate.md)
-
+| API | iOS | Android | Web |
+| --- | --- | --- | --- |
+| [Accelerometer](example/Accelerometer.md) | Todo | Todo | Todo |
+| [App Information](example/AppInformation.md) | :white_check_mark: | :white_check_mark: | Todo |
+| [Battery](example/Battery.md) | Todo | Todo| Todo |
+| [Clipboard](example/Clipboard.md) | Todo | Todo| Todo |
+| [Compass](example/Compass.md) | Todo | Todo| Todo |
+| [Connectivity](example/Connectivity.md) | Todo | Todo| Todo |
+| [Device Display Information](example/DeviceDisplayInformation.md) | Todo | Todo| Todo |
+| [Device Information](example/DeviceInformation.md) | Todo | Todo| Todo |
+| [Email](example/Email.md) | Todo | Todo| Todo |
+| [File System Helpers](example/FileSystemHelpers.md) | Todo | Todo| Todo |
+| [Flashlight](example/Flashlight.md) | Todo | Todo| Todo |
+| [Geocoding](example/Geocoding.md) | Todo | Todo| Todo |
+| [Geolocation](example/Geolocation.md) | Todo | Todo| Todo |
+| [Gyroscope](example/Gyroscope.md) | Todo | Todo| Todo |
+| [Launcher](example/launcher.md) | Todo | Todo| Todo |
+| [Magnetometer](example/Magnetometer.md) | Todo | Todo| Todo |
+| [Maps](example/maps.md) | Todo | Todo| Todo |
+| [Open Browser](example/OpenBrowser.md) | Todo | Todo| Todo |
+| [Phone Dialer](example/PhoneDialer.md) | Todo | Todo| Todo |
+| [Preferences](example/Preferences.md) | :white_check_mark: | :white_check_mark:| Todo |
+| [Screen Lock](example/ScreenLock.md) | Todo | Todo| Todo |
+| [Secure Storage](example/SecureStorage.md) | Todo | Todo| Todo |
+| [Share](example/share.md) | Todo | Todo| Todo |
+| [SMS](example/sms.md) | Todo | Todo| Todo |
+| [Text-to-Speech](example/TextToSpeech.md) | Todo | Todo| Todo |
+| [Version Tracking](example/VersionTracking.md) | :white_check_mark: | :white_check_mark:| Todo |
+| [Vibrate](example/vibrate.md) | :white_check_mark: | :white_check_mark:| Todo |
 
 ## License
 
