@@ -23,7 +23,7 @@ The following cross-platform APIs are available in flutter_essentials:
 | [Compass](example/Compass.md) | Todo | Todo| Todo |
 | [Connectivity](example/Connectivity.md) | Todo | Todo| Todo |
 | [Device Display Information](example/DeviceDisplayInformation.md) | Todo | Todo| Todo |
-| [Device Information](example/DeviceInformation.md) | Todo | Todo| Todo |
+| [Device Information](example/DeviceInformation.md) | :white_check_mark: | :white_check_mark:| Todo |
 | [Email](example/Email.md) | Todo | Todo| Todo |
 | [File System Helpers](example/FileSystemHelpers.md) | Todo | Todo| Todo |
 | [Flashlight](example/Flashlight.md) | Todo | Todo| Todo |
@@ -42,7 +42,7 @@ The following cross-platform APIs are available in flutter_essentials:
 | [SMS](example/sms.md) | Todo | Todo| Todo |
 | [Text-to-Speech](example/TextToSpeech.md) | Todo | Todo| Todo |
 | [Version Tracking](example/VersionTracking.md) | :white_check_mark: | :white_check_mark:| Todo |
-| [Vibrate](example/vibrate.md) | :white_check_mark: | :white_check_mark:| Todo |
+| [Vibrate](example/vibrate.md) | Todo | Todo | Todo |
 
 ## License
 
