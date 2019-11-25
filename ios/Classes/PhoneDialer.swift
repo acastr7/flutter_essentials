@@ -1,10 +1,3 @@
-//
-//  PhoneDialer.swift
-//  flutter_essentials
-//
-//  Created by Dev Ops on 11/13/19.
-//
-
 import Foundation
 public class PhoneDialer : NSObject{
     static var prefix = "PhoneDialer."
