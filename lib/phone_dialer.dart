@@ -6,6 +6,14 @@ class PhoneDialer {
   static Future open(String number) async {
     var data = <String, dynamic>{"number": number};
 
+    if(data?.isEmpty ?? true){
+      throw ArgumentError.notNull('number');
+    }
+
+    if(!await isSupported()){
+      throw Exception('Not Supported');
+    }
+
     await SHARED_CHANNEL.invokeMethod('${_methodPrefix}open', data);
   }
 
