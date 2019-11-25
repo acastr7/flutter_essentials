@@ -6,6 +6,9 @@ import android.content.Context
 import android.os.Bundle
 import java.lang.NullPointerException
 import java.lang.ref.WeakReference
+import android.os.Build
+
+
 
 class Platform {
     companion object {
@@ -24,6 +27,29 @@ class Platform {
             return activity
         }
 
+        fun hasApiLevel(versionCode : Int): Boolean{
+            return Build.VERSION.SDK_INT >= versionCode
+        }
+
+        // Android 24
+        val hasApiLevelN : Boolean
+            get() = hasApiLevel(Build.VERSION_CODES.N)
+
+        // Android 25
+        val hasApiLevelNMr1 : Boolean
+            get() = hasApiLevel(Build.VERSION_CODES.N_MR1)
+
+        // Android 26
+        val hasApiLevelO : Boolean
+            get() = hasApiLevel(Build.VERSION_CODES.O)
+
+        // Android 27
+        val hasApiLevelOMr1 : Boolean
+            get() = hasApiLevel(Build.VERSION_CODES.O_MR1)
+
+        // Android 28
+        val hasApiLevelP : Boolean
+            get() = hasApiLevel(Build.VERSION_CODES.P)
 
     }
 

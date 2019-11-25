@@ -18,6 +18,9 @@ public class SwiftFlutterEssentialsPlugin: NSObject, FlutterPlugin {
     else if call.method.starts(with: AppPreferences.prefix){
         AppPreferences.handle(call, result: result)
     }
+    else if call.method.starts(with: PhoneDialer.prefix){
+        PhoneDialer.handle(call, result: result)
+    }
     else{
         result(FlutterMethodNotImplemented)
     }

@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: 'Pub Get'
+        run: flutter pub get
+        working-directory: ./example
+      - name: 'Build Apk'
+        run: flutter build apk
+        working-directory: ./example
+      - name: 'Build iOS'
+        run: flutter build ios --release --no-codesign
+        working-directory: ./example
