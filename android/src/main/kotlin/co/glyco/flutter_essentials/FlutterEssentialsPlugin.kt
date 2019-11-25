@@ -24,6 +24,7 @@ class FlutterEssentialsPlugin(val activity: Activity) : MethodCallHandler {
             call.method.startsWith(AppInfo.prefix) -> AppInfo().onMethodCall(call, result)
             call.method.startsWith(AppPreferences.prefix) -> AppPreferences().onMethodCall(call, result)
             call.method.startsWith(DeviceInfo.prefix) -> DeviceInfo().onMethodCall(call, result)
+            call.method.startsWith(PhoneDialer.prefix) -> PhoneDialer().onMethodCall(call, result)
             else -> result.notImplemented()
         }
     }
