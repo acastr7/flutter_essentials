@@ -3,7 +3,7 @@ import 'package:flutter_essentials_example/app_info_page.dart';
 import 'package:flutter_essentials_example/preferences_page.dart';
 import 'package:flutter_essentials_example/version_tracking_page.dart';
 import 'package:flutter_essentials/version_tracking.dart';
-
+import 'package:flutter_essentials_example/phone_dialer_page.dart';
 import 'device_info_page.dart';
 
 
@@ -58,6 +58,16 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => new DeviceInfoPage()),
+                );
+              },
+            )
+            ,
+            RaisedButton(
+              child: Text("Phone Dialer"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => new PhoneDialerPage()),
                 );
               },
             )

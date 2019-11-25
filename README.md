@@ -34,7 +34,7 @@ The following cross-platform APIs are available in flutter_essentials:
 | [Magnetometer](example/Magnetometer.md) | Todo | Todo| Todo |
 | [Maps](example/maps.md) | Todo | Todo| Todo |
 | [Open Browser](example/OpenBrowser.md) | Todo | Todo| Todo |
-| [Phone Dialer](example/PhoneDialer.md) | Todo | Todo| Todo |
+| [Phone Dialer](docs/PhoneDialer.md) | :white_check_mark: | :white_check_mark: | Todo |
 | [Preferences](example/Preferences.md) | :white_check_mark: | :white_check_mark:| Todo |
 | [Screen Lock](example/ScreenLock.md) | Todo | Todo| Todo |
 | [Secure Storage](example/SecureStorage.md) | Todo | Todo| Todo |

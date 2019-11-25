@@ -28,7 +28,6 @@ public class AppInfo : NSObject{
         }else{
             result(FlutterMethodNotImplemented)
         }
-        
     }
     
     static func getBundleValue(key : String) -> String?{
