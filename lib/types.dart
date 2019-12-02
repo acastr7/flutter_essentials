@@ -12,7 +12,12 @@ class EnumValues<T> {
   }
 }
 
-enum SensorSpeed { DEFAULT, UI, GAME, FASTEST }
+enum SensorSpeed {
+  DEFAULT, // rate (default) suitable for screen orientation changes
+  UI, // rate suitable for the user interface 
+  GAME, // rate suitable for games
+  FASTEST // Get sensor data as fast as possible
+}
 
 final sensorSpeedValues = EnumValues({
   "Default": SensorSpeed.DEFAULT,
