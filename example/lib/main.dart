@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_essentials_example/accelerometer_page.dart';
 import 'package:flutter_essentials_example/app_info_page.dart';
 import 'package:flutter_essentials_example/preferences_page.dart';
 import 'package:flutter_essentials_example/version_tracking_page.dart';
@@ -6,8 +7,7 @@ import 'package:flutter_essentials/version_tracking.dart';
 import 'package:flutter_essentials_example/phone_dialer_page.dart';
 import 'device_info_page.dart';
 
-
-void main() async{
+void main() async {
   runApp(MaterialApp(
     title: 'Home',
     home: HomePage(),
@@ -39,7 +39,8 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => new PreferencesPage()),
+                  MaterialPageRoute(
+                      builder: (context) => new PreferencesPage()),
                 );
               },
             ),
@@ -48,7 +49,8 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => new VersionTrackingPage()),
+                  MaterialPageRoute(
+                      builder: (context) => new VersionTrackingPage()),
                 );
               },
             ),
@@ -60,14 +62,24 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => new DeviceInfoPage()),
                 );
               },
-            )
-            ,
+            ),
             RaisedButton(
               child: Text("Phone Dialer"),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => new PhoneDialerPage()),
+                  MaterialPageRoute(
+                      builder: (context) => new PhoneDialerPage()),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text("Accelerometer"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new AccelerometerPage()),
                 );
               },
             )

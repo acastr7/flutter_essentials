@@ -3,6 +3,7 @@ package co.glyco.flutter_essentials
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.hardware.SensorManager
 import android.os.Bundle
 import java.lang.NullPointerException
 import java.lang.ref.WeakReference
@@ -50,6 +51,9 @@ class Platform {
         // Android 28
         val hasApiLevelP : Boolean
             get() = hasApiLevel(Build.VERSION_CODES.P)
+
+        val sensorManager : SensorManager?
+            get() = appContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
     }
 
