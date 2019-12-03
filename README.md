@@ -16,7 +16,7 @@ The following cross-platform APIs are available in flutter_essentials:
 
 | API | iOS | Android | Web |
 | --- | --- | --- | --- |
-| [Accelerometer](example/Accelerometer.md) | Todo | Todo | Todo |
+| [Accelerometer](example/Accelerometer.md) | :white_check_mark: | :white_check_mark: | Todo |
 | [App Information](example/AppInformation.md) | :white_check_mark: | :white_check_mark: | Todo |
 | [Battery](example/Battery.md) | Todo | Todo| Todo |
 | [Clipboard](example/Clipboard.md) | Todo | Todo| Todo |
