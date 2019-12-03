@@ -79,9 +79,7 @@ class Accelerometer {
     var z = acceleration.z * _gravity;
 
     var g = (x * x) + (y * y) + (z * z);
-    print('g = $g');
     var accelerating = g > _accelerationThreshold;
-    print('Assing Timestamp : $timestamp -- Accelerating: $accelerating');
     _queue.add(timestamp, accelerating);
     if (_queue.isShaking) {
       _queue.clear();

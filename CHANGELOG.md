@@ -11,3 +11,7 @@
 * Contains Device Info Api
 * Contains App Preference Api
 * Contains Version Tracking Api
+
+## 0.0.5
+* Add accelerometer 
+* Add Phone Dialer
